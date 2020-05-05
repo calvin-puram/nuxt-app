@@ -14,17 +14,18 @@
 
 <script>
 import EventCard from '@/components/EventCard';
+import EventServices from '@/Services/EventServices.js';
 export default {
   components: {
     EventCard
   },
-  async asyncData({ $axios, error }) {
+  async asyncData({ error }) {
     try {
-      const res = await $axios.get('http://localhost:4000/events/');
+      const res = await EventServices.getEvents();
       return {
         events: res.data
       };
-    } catch (error) {
+    } catch (e) {
       error({
         statusCode: 503,
         message: 'unable to fetch events at this time. Please try again'
