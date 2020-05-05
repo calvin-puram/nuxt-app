@@ -18,12 +18,20 @@ export default {
   components: {
     EventCard
   },
-  asyncData({ $axios }) {
-    return $axios.get('http://localhost:4000/events/').then(res => {
-      return {
-        events: res.data
-      };
-    });
+  asyncData({ $axios, error }) {
+    return $axios
+      .get('http://localhost:4000/events/')
+      .then(res => {
+        return {
+          events: res.data
+        };
+      })
+      .catch(e => {
+        error({
+          statusCode: 503,
+          message: 'unable to fetch events at this time. Please try again'
+        });
+      });
   },
   head() {
     return {
