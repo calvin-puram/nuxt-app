@@ -10,6 +10,18 @@ import NavBar from '@/components/NavBar';
 export default {
   components: {
     NavBar
+  },
+  head() {
+    return {
+      titleTemplate: '%s - Real World Vue',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Search for Events within your neighbourhood'
+        }
+      ]
+    };
   }
 };
 </script>
