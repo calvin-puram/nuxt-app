@@ -1,11 +1,15 @@
 <template>
   <div class="posts-page">
-    <h1>posts</h1>
+    <PostList />
   </div>
 </template>
 
 <script>
+import PostList from '@/components/Posts/PostList';
 export default {
+  components: {
+    PostList
+  },
   head() {
     return {
       title: 'All Articles',
