@@ -22,17 +22,18 @@
 <script>
 export default {
   head() {
-  return {
-    title: 'Single Article',
-    meta: [
-      {
-        hid: 'description',
-        name: 'description',
-        content: 'Single article'
-      }
-    ]
-  };
-}
+    return {
+      title: 'Single Article',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Single article'
+        }
+      ]
+    };
+  }
+};
 </script>
 
 <style scoped>
