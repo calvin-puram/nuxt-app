@@ -19,6 +19,22 @@
   </div>
 </template>
 
+<script>
+export default {
+  head() {
+  return {
+    title: 'Single Article',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Single article'
+      }
+    ]
+  };
+}
+</script>
+
 <style scoped>
 .single-post-page {
   padding: 30px;
