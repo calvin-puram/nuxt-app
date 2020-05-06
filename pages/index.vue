@@ -32,6 +32,16 @@
   </div>
 </template>
 
+<script>
+export default {
+  head() {
+    return {
+      title: 'Latest Articles'
+    };
+  }
+};
+</script>
+
 <style scoped>
 .intro {
   height: 300px;
