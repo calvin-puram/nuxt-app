@@ -1,17 +1,40 @@
 <template>
-  <nuxt-link :to="'/posts/' + 1" class="post-preview">
+  <nuxt-link :to="`/posts/${id}`" class="post-preview">
     <article>
       <div
         class="post-thumbnail"
-        style="background-image: url('https://static.pexels.com/photos/270348/pexels-photo-270348.jpeg')"
+        :style="{ backgroundImage: `url(${thumbnail})` }"
       ></div>
       <div class="post-content">
-        <h1>Post Title</h1>
-        <p>Preview Text</p>
+        <h1>{{ title }}</h1>
+        <p>{{ postPreview }}</p>
       </div>
     </article>
   </nuxt-link>
 </template>
+
+<script>
+export default {
+  props: {
+    title: {
+      type: String,
+      required: true
+    },
+    postPreview: {
+      type: String,
+      required: true
+    },
+    id: {
+      type: String,
+      required: true
+    },
+    thumbnail: {
+      type: String,
+      required: true
+    }
+  }
+};
+</script>
 
 <style>
 .post-preview {

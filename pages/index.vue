@@ -4,9 +4,24 @@
       <h1>Get the latest tech news!</h1>
     </section>
     <section class="featured-posts">
-      <PostsPreview />
-      <PostsPreview />
-      <PostsPreview />
+      <PostsPreview
+        id="1"
+        title="Blog One"
+        post-preview="this is the first post of the article"
+        thumbnail="https://static.pexels.com/photos/270348/pexels-photo-270348.jpeg"
+      />
+      <PostsPreview
+        id="2"
+        title="Blog Two"
+        post-preview="this is the second post of the article"
+        thumbnail="https://static.pexels.com/photos/270348/pexels-photo-270348.jpeg"
+      />
+      <PostsPreview
+        id="3"
+        title="Blog Three"
+        post-preview="this is the third post of the article"
+        thumbnail="https://static.pexels.com/photos/270348/pexels-photo-270348.jpeg"
+      />
     </section>
   </div>
 </template>
