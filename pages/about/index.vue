@@ -31,17 +31,18 @@
 <script>
 export default {
   head() {
-  return {
-    title: 'About Us',
-    meta: [
-      {
-        hid: 'description',
-        name: 'description',
-        content: 'About this amazing article blog'
-      }
-    ]
-  };
-}
+    return {
+      title: 'About Us',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'About this amazing article blog'
+        }
+      ]
+    };
+  }
+};
 </script>
 
 <style scoped>
