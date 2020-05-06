@@ -4,6 +4,23 @@
   </div>
 </template>
 
+<script>
+export default {
+  head() {
+    return {
+      title: 'All Articles',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'All post articles'
+        }
+      ]
+    };
+  }
+};
+</script>
+
 <style scoped>
 .posts-page {
   display: flex;
