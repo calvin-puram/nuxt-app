@@ -5,21 +5,22 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import PostList from '@/components/Posts/PostList';
 export default {
   components: {
     PostList
   },
-  async asyncData({ $axios, error }) {
+  async fetch({ store, error }) {
     try {
-      const { data } = await $axios.get('http://localhost:4000/posts/');
-      return {
-        posts: data
-      };
+      await store.dispatch('posts/setPosts');
     } catch (e) {
       error({ statusCode: 400, message: 'Inavalid Request!' });
     }
   },
+  computed: mapState({
+    posts: state => state.posts.posts
+  }),
   head() {
     return {
       title: 'All Articles',

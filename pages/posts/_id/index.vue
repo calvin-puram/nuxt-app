@@ -20,19 +20,19 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
-  async asyncData({ $axios, error, params }) {
+  async fetch({ store, error, params }) {
     try {
-      const { data } = await $axios.get(
-        `http://localhost:4000/posts/${params.id}`
-      );
-      return {
-        post: data
-      };
+      await store.dispatch('posts/setPost', params.id);
     } catch (e) {
       error({ statusCode: 400, message: 'Inavalid Request!' });
     }
   },
+  computed: mapState({
+    post: state => state.posts.post
+  }),
   head() {
     return {
       title: 'Single Article',
