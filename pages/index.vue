@@ -13,33 +13,8 @@ export default {
   components: {
     PostList
   },
-  data() {
-    return {
-      loadedPost: [
-        {
-          id: 1,
-          title: 'first post',
-          thumbnail:
-            'https://static.pexels.com/photos/270348/pexels-photo-270348.jpeg',
-          postPreview: 'this is just a preview'
-        },
-        {
-          id: 2,
-          title: 'second post',
-          thumbnail:
-            'https://static.pexels.com/photos/270348/pexels-photo-270348.jpeg',
-          postPreview: 'this is just a preview'
-        },
-        {
-          id: 3,
-          title: 'third post',
-          thumbnail:
-            'https://static.pexels.com/photos/270348/pexels-photo-270348.jpeg',
-          postPreview: 'this is just a preview'
-        }
-      ]
-    };
-  },
+  asyncData(context, callback) {},
+
   head() {
     return {
       title: 'Latest Articles'
