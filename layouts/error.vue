@@ -1,6 +1,22 @@
 <template>
-  <div>
-    <h3>An error occured!!</h3>
-    <nuxt-link to="/">Go back Home</nuxt-link>
+  <div class="error-page">
+    <h1>Oops, something went wrong!</h1>
+    <p>Back to <a href="/">safety</a>!</p>
   </div>
 </template>
+
+<style scoped>
+.error-page {
+  text-align: center;
+}
+
+.error-page a {
+  text-decoration: none;
+  color: red;
+}
+
+.error-page a:hover,
+.error-page a:active {
+  color: salmon;
+}
+</style>
