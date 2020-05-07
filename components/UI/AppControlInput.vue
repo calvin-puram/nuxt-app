@@ -29,6 +29,11 @@ export default {
       type: String,
       required: true
     }
+  },
+  head() {
+    return {
+      title: 'Create Post'
+    };
   }
 };
 </script>
