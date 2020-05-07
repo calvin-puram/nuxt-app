@@ -1,28 +1,40 @@
 <template>
   <div class="admin-post-page">
     <section class="update-form">
-      <AdminPostForm :loaded-post="loadedPost" />
+      <AdminPostForm :loaded-post="singlePost" @submitForm="updatePost" />
     </section>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import AdminPostForm from '@/components/Admin/AdminPostForm';
 export default {
   layout: 'admin',
   components: {
     AdminPostForm
   },
-  data() {
-    return {
-      loadedPost: {
-        author: 'calvin job',
-        title: 'fundamental web training',
-        thumbnailLink:
-          'https://static.pexels.com/photos/270348/pexels-photo-270348.jpeg',
-        content: 'this is a new post today'
-      }
-    };
+  async fetch({ store, error, params }) {
+    try {
+      await store.dispatch('posts/setPost', params.postId);
+    } catch (e) {
+      error({ statusCode: 400, message: 'Inavalid Request!' });
+    }
+  },
+  computed: mapState({
+    singlePost: state => state.posts.post
+  }),
+  methods: {
+    updatePost(data) {
+      this.$store
+        .dispatch('posts/updatePost', {
+          data,
+          id: this.$route.params.postId
+        })
+        .then(() => {
+          this.$router.push(`/posts/${this.$route.params.postId}`);
+        });
+    }
   },
   head() {
     return {

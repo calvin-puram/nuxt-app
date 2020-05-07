@@ -36,5 +36,12 @@ export const actions = {
       `https://nuxt-blog-6b57a.firebaseio.com/posts.json`,
       data
     );
+  },
+
+  async updatePost({ commit }, data) {
+    await this.$axios.patch(
+      `https://nuxt-blog-6b57a.firebaseio.com/posts/${data.id}.json`,
+      data.data
+    );
   }
 };

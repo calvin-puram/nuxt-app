@@ -15,9 +15,11 @@ export default {
   },
   methods: {
     onSubmit(postData) {
-      this.$store.dispatch('posts/postData', postData).then(() => {
-        this.$router.push('/');
-      });
+      this.$store
+        .dispatch('posts/postData', { ...postData, createdAt: new Date() })
+        .then(() => {
+          this.$router.push('/');
+        });
     }
   }
 };
