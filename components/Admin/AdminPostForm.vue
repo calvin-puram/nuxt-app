@@ -38,14 +38,23 @@ export default {
     AppControlInput,
     AppButtonInput
   },
+  props: {
+    // eslint-disable-next-line vue/require-default-prop
+    loadedPost: {
+      type: Object,
+      required: false
+    }
+  },
   data() {
     return {
-      editedPost: {
-        author: '',
-        title: '',
-        thumbnailLink: '',
-        content: ''
-      }
+      editedPost: this.loadedPost
+        ? { ...this.loadedPost }
+        : {
+            author: '',
+            title: '',
+            thumbnailLink: '',
+            content: ''
+          }
     };
   },
   methods: {
