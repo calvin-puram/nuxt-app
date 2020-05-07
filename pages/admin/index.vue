@@ -5,7 +5,7 @@
     </section>
     <section class="existing-posts">
       <h1>Existing Posts</h1>
-      <PostList />
+      <PostList :is-admin="isAdmin" />
     </section>
   </div>
 </template>
@@ -16,6 +16,11 @@ import PostList from '@/components/Posts/PostList';
 export default {
   components: {
     PostList
+  },
+  data() {
+    return {
+      isAdmin: true
+    };
   },
   head() {
     return {
