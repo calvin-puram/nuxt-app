@@ -13,6 +13,12 @@
       >Thunbnail Link</AppControlInput
     >
     <AppControlInput
+      v-model="editedPost.postPreview"
+      control-type="textarea"
+      :value="editedPost.postPreview"
+      >Preview Text</AppControlInput
+    >
+    <AppControlInput
       v-model="editedPost.content"
       control-type="textarea"
       :value="editedPost.content"
@@ -53,6 +59,7 @@ export default {
             author: '',
             title: '',
             thumbnailLink: '',
+            postPreview: '',
             content: ''
           }
     };
@@ -60,7 +67,7 @@ export default {
   methods: {
     onSave() {
       // Save the post
-      console.log(this.editedPost);
+      this.$emit('submitForm', this.editedPost);
     },
     onCancel() {
       // Navigate back

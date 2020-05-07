@@ -24,20 +24,21 @@ export default {
   },
   async fetch({ store, error }) {
     try {
-      await store.dispatch('posts/setPosts');
+      await store.dispatch('posts/getPosts');
     } catch (e) {
       error({ statusCode: 400, message: 'Inavalid Request!' });
     }
   },
-  computed: mapState({
-    posts: state => state.posts.posts
-  }),
-  layout: 'admin',
   data() {
     return {
       isAdmin: true
     };
   },
+  computed: mapState({
+    posts: state => state.posts.posts
+  }),
+  layout: 'admin',
+
   head() {
     return {
       title: 'Manage Post'

@@ -5,7 +5,7 @@ export const state = () => ({
 });
 
 export const mutations = {
-  setPosts(state, posts) {
+  getPosts(state, posts) {
     state.posts = posts;
   },
   setPost(state, post) {
@@ -14,13 +14,26 @@ export const mutations = {
 };
 
 export const actions = {
-  async setPosts({ commit }) {
-    const res = await axios.get('http://localhost:4000/posts');
-    commit('setPosts', res.data);
+  async getPosts({ commit }) {
+    const res = await this.$axios.get(
+      'https://nuxt-blog-6b57a.firebaseio.com/posts.json'
+    );
+    const postArray = [];
+    for (const key in res.data) {
+      postArray.push({ ...res.data[key], id: key });
+    }
+    commit('getPosts', postArray);
   },
 
   async setPost({ commit }, id) {
     const res = await axios.get(`http://localhost:4000/posts/${id}`);
     commit('setPost', res.data);
+  },
+
+  async postData({ commit }, data) {
+    await this.$axios.post(
+      `https://nuxt-blog-6b57a.firebaseio.com/posts.json`,
+      data
+    );
   }
 };

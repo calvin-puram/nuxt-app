@@ -17,7 +17,7 @@ export default {
 
   async fetch({ store, error }) {
     try {
-      await store.dispatch('posts/setPosts');
+      await store.dispatch('posts/getPosts');
     } catch (e) {
       error({ statusCode: 400, message: 'Inavalid Request!' });
     }
