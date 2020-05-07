@@ -1,4 +1,3 @@
-import axios from 'axios';
 export const state = () => ({
   posts: [],
   post: {}
@@ -26,7 +25,9 @@ export const actions = {
   },
 
   async setPost({ commit }, id) {
-    const res = await axios.get(`http://localhost:4000/posts/${id}`);
+    const res = await this.$axios.get(
+      `https://nuxt-blog-6b57a.firebaseio.com/posts/${id}.json`
+    );
     commit('setPost', res.data);
   },
 
