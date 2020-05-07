@@ -7,7 +7,7 @@
     </section>
     <section class="existing-posts">
       <h1>Existing Posts</h1>
-      <PostList :is-admin="isAdmin" />
+      <PostList :is-admin="isAdmin" :posts="posts" />
     </section>
   </div>
 </template>
@@ -17,11 +17,21 @@ import AppButtonInput from '@/components/UI/AppButtonInput';
 import PostList from '@/components/Posts/PostList';
 
 export default {
-  layout: 'admin',
   components: {
     PostList,
     AppButtonInput
   },
+  async asyncData({ $axios, error }) {
+    try {
+      const { data } = await $axios.get(`http://localhost:4000/posts/`);
+      return {
+        posts: data
+      };
+    } catch (e) {
+      error({ statusCode: 400, message: 'Inavalid Request!' });
+    }
+  },
+  layout: 'admin',
   data() {
     return {
       isAdmin: true

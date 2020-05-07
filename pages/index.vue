@@ -3,7 +3,7 @@
     <section class="intro">
       <h1>Get the latest tech news!</h1>
     </section>
-    <PostList :posts="loadedPost" />
+    <PostList :posts="posts" />
   </div>
 </template>
 
@@ -13,7 +13,16 @@ export default {
   components: {
     PostList
   },
-  asyncData(context, callback) {},
+  async asyncData({ $axios, error }) {
+    try {
+      const { data } = await $axios.get('http://localhost:4000/posts/');
+      return {
+        posts: data
+      };
+    } catch (e) {
+      error({ statusCode: 400, message: 'Inavalid Request!' });
+    }
+  },
 
   head() {
     return {

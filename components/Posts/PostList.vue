@@ -2,12 +2,12 @@
   <section class="featured-posts">
     <PostsPreview
       v-for="post in posts"
-      id="post.id"
+      :id="post.id"
       :key="post.id"
       :is-admin="isAdmin"
       :title="post.title"
       :post-preview="post.postPreview"
-      thumbnail="post.thumbnail"
+      :thumbnail="post.thumbnail"
     />
   </section>
 </template>
