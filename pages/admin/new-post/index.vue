@@ -2,15 +2,22 @@
   <div class="admin-new-post-page">
     <section class="admin-new-post-page">
       <form @submit.prevent="onSave">
-        <AppControlInput v-model="editedPost.author"
+        <AppControlInput v-model="editedPost.author" :value="editedPost.author"
           >Author Name</AppControlInput
         >
 
-        <AppControlInput v-model="editedPost.title">Title</AppControlInput>
-        <AppControlInput v-model="editedPost.thunbnailLink"
-          >ThunbNail Link</AppControlInput
+        <AppControlInput v-model="editedPost.title" :value="editedPost.title"
+          >Title</AppControlInput
         >
-        <AppControlInput v-model="editedPost.content" control-type="textarea"
+        <AppControlInput
+          v-model="editedPost.thumbnailLink"
+          :value="editedPost.thumbnailLink"
+          >Thunbnail Link</AppControlInput
+        >
+        <AppControlInput
+          v-model="editedPost.content"
+          control-type="textarea"
+          :value="editedPost.content"
           >Content</AppControlInput
         >
 

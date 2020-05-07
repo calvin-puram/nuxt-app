@@ -16,6 +16,11 @@ import PostList from '@/components/Posts/PostList';
 export default {
   components: {
     PostList
+  },
+  head() {
+    return {
+      title: 'Manage Post'
+    };
   }
 };
 </script>

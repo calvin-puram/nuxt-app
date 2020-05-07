@@ -9,7 +9,7 @@ export default {
   props: {
     btnStyle: {
       type: String,
-      required: true
+      default: ''
     }
   }
 };
