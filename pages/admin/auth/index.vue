@@ -36,7 +36,11 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.$store.dispatch('auth/login', {
+      let authUrl = 'auth/login';
+      if (!this.isLogin) {
+        authUrl = 'auth/register';
+      }
+      this.$store.dispatch(authUrl, {
         email: this.email,
         password: this.password,
         returnSecureToken: true
