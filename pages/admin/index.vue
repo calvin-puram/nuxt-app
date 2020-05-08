@@ -14,14 +14,8 @@
 
 <script>
 import { mapState } from 'vuex';
-import AppButtonInput from '@/components/UI/AppButtonInput';
-import PostList from '@/components/Posts/PostList';
 
 export default {
-  components: {
-    PostList,
-    AppButtonInput
-  },
   async fetch({ store, error }) {
     try {
       await store.dispatch('posts/getPosts');

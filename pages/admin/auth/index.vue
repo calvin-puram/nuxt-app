@@ -24,15 +24,9 @@
 </template>
 
 <script>
-import AppControlInput from '@/components/UI/AppControlInput';
-import AppButtonInput from '@/components/UI/AppButtonInput';
-
 export default {
   layout: 'admin',
-  components: {
-    AppControlInput,
-    AppButtonInput
-  },
+
   data() {
     return {
       email: '',

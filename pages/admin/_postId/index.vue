@@ -8,12 +8,10 @@
 
 <script>
 import { mapState } from 'vuex';
-import AdminPostForm from '@/components/Admin/AdminPostForm';
+
 export default {
   layout: 'admin',
-  components: {
-    AdminPostForm
-  },
+
   async fetch({ store, error, params }) {
     try {
       await store.dispatch('posts/setPost', params.postId);

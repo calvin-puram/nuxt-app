@@ -9,12 +9,8 @@
 
 <script>
 import { mapState } from 'vuex';
-import PostList from '@/components/Posts/PostList';
-export default {
-  components: {
-    PostList
-  },
 
+export default {
   async fetch({ store, error }) {
     try {
       await store.dispatch('posts/getPosts');
