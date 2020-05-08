@@ -63,5 +63,11 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {}
+  },
+  /**
+   * environmental variable
+   */
+  env: {
+    baseUrl: 'https://nuxt-blog-6b57a.firebaseio.com'
   }
 };

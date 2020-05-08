@@ -26,21 +26,18 @@ export const actions = {
 
   async setPost({ commit }, id) {
     const res = await this.$axios.get(
-      `https://nuxt-blog-6b57a.firebaseio.com/posts/${id}.json`
+      `${process.env.baseUrl}/posts/${id}.json`
     );
     commit('setPost', res.data);
   },
 
   async postData({ commit }, data) {
-    await this.$axios.post(
-      `https://nuxt-blog-6b57a.firebaseio.com/posts.json`,
-      data
-    );
+    await this.$axios.post(`${process.env.baseUrl}/posts.json`, data);
   },
 
   async updatePost({ commit }, data) {
     await this.$axios.patch(
-      `https://nuxt-blog-6b57a.firebaseio.com/posts/${data.id}.json`,
+      `${process.env.baseUrl}/posts/${data.id}.json`,
       data.data
     );
   }
