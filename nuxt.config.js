@@ -74,6 +74,7 @@ export default {
    * router config
    */
   router: {
+    middleware: 'log',
     extendRoutes(routes, resolve) {
       routes.push({
         path: '*',
