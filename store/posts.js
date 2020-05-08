@@ -14,9 +14,7 @@ export const mutations = {
 
 export const actions = {
   async getPosts({ commit }) {
-    const res = await this.$axios.get(
-      'https://nuxt-blog-6b57a.firebaseio.com/posts.json'
-    );
+    const res = await this.$axios.get(`${process.env.POST_URL}/posts.json`);
     const postArray = [];
     for (const key in res.data) {
       postArray.push({ ...res.data[key], id: key });
@@ -26,13 +24,13 @@ export const actions = {
 
   async setPost({ commit }, id) {
     const res = await this.$axios.get(
-      `${process.env.baseUrl}/posts/${id}.json`
+      `${process.env.POST_URL}/posts/${id}.json`
     );
     commit('setPost', res.data);
   },
 
   async postData({ commit }, data) {
-    await this.$axios.post(`${process.env.baseUrl}/posts.json`, data);
+    await this.$axios.post(`${process.env.POST_URL}/posts.json`, data);
   },
 
   async updatePost({ commit }, data) {

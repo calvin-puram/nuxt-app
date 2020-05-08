@@ -6,7 +6,7 @@ export const actions = {
   async register({ commit }, data) {
     try {
       const res = await this.$axios.post(
-        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.fbApiKey}`,
+        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.FB_API_KEY}`,
         data
       );
       console.log(res.data);
@@ -18,7 +18,7 @@ export const actions = {
   async login({ commit }, data) {
     try {
       const res = await this.$axios.post(
-        `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.fbApiKey}`,
+        `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.FB_API_KEY}`,
         data
       );
       console.log(res.data);
