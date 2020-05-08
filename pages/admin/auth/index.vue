@@ -1,7 +1,7 @@
 <template>
   <div class="admin-auth-page">
     <div class="auth-container">
-      <form>
+      <form @submit.prevent="handleSubmit">
         <AppControlInput v-model="email" type="email" :value="email"
           >E-Mail Address</AppControlInput
         >
@@ -33,6 +33,15 @@ export default {
       password: '',
       isLogin: true
     };
+  },
+  methods: {
+    handleSubmit() {
+      this.$store.dispatch('auth/login', {
+        email: this.email,
+        password: this.password,
+        returnSecureToken: true
+      });
+    }
   }
 };
 </script>

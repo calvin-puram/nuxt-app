@@ -68,13 +68,14 @@ export default {
    * environmental variable
    */
   env: {
-    baseUrl: 'https://nuxt-blog-6b57a.firebaseio.com'
+    baseUrl: 'https://nuxt-blog-6b57a.firebaseio.com',
+    fbApiKey: 'AIzaSyC_9d7pTAnnQnMDQu-4z38Q3u8W6dq3jps'
   },
   /**
    * router config
    */
   router: {
-    middleware: 'log',
+    // middleware: 'log',
     extendRoutes(routes, resolve) {
       routes.push({
         path: '*',
