@@ -29,7 +29,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ['~assets/styles/main.css'],
   /*
    ** Plugins to load before mounting the App
    */
@@ -80,5 +80,9 @@ export default {
         component: resolve(__dirname, 'pages/index.vue')
       });
     }
+  },
+  pageTransition: {
+    name: 'fade',
+    mode: 'out-in'
   }
 };
