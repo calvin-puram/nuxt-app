@@ -69,5 +69,16 @@ export default {
    */
   env: {
     baseUrl: 'https://nuxt-blog-6b57a.firebaseio.com'
+  },
+  /**
+   * router config
+   */
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.push({
+        path: '*',
+        component: resolve(__dirname, 'pages/index.vue')
+      });
+    }
   }
 };
