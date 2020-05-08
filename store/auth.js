@@ -1,6 +1,12 @@
-export const state = () => ({});
+export const state = () => ({
+  token: ''
+});
 
-export const mutations = {};
+export const mutations = {
+  setToken(state, token) {
+    state.token = token;
+  }
+};
 
 export const actions = {
   async register({ commit }, data) {
@@ -9,7 +15,10 @@ export const actions = {
         `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.FB_API_KEY}`,
         data
       );
-      console.log(res.data);
+      if (res) {
+        commit('setToken', res.data.idToken);
+      }
+      return res;
     } catch (e) {
       console.log(e.response.data.error.message);
     }
@@ -21,7 +30,10 @@ export const actions = {
         `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.FB_API_KEY}`,
         data
       );
-      console.log(res.data);
+      if (res) {
+        commit('setToken', res.data.idToken);
+      }
+      return res;
     } catch (e) {
       console.log(e.response.data.error.message);
     }

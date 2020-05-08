@@ -40,11 +40,15 @@ export default {
       if (!this.isLogin) {
         authUrl = 'auth/register';
       }
-      this.$store.dispatch(authUrl, {
-        email: this.email,
-        password: this.password,
-        returnSecureToken: true
-      });
+      this.$store
+        .dispatch(authUrl, {
+          email: this.email,
+          password: this.password,
+          returnSecureToken: true
+        })
+        .then(res => {
+          if (res) this.$router.push('/admin');
+        });
     }
   }
 };
