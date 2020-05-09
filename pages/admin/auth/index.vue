@@ -47,7 +47,9 @@ export default {
           returnSecureToken: true
         })
         .then(res => {
-          if (res) this.$router.push('/admin');
+          if (res && res.data.idToken) {
+            this.$router.push('/');
+          }
         });
     }
   }

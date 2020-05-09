@@ -9,7 +9,7 @@
 <script>
 export default {
   layout: 'admin',
-
+  middleware: ['auth'],
   methods: {
     onSubmit(postData) {
       this.$store

@@ -15,7 +15,7 @@ export const actions = {
         `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.FB_API_KEY}`,
         data
       );
-      if (res) {
+      if (res && res.data.idToken) {
         commit('setToken', res.data.idToken);
         // localStorage.setItem('token', JSON.stringify(res.data.idToken));
       }
@@ -31,7 +31,7 @@ export const actions = {
         `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.FB_API_KEY}`,
         data
       );
-      if (res) {
+      if (res && res.data.idToken) {
         commit('setToken', res.data.idToken);
         // localStorage.setItem('token', JSON.stringify(res.data.idToken));
       }
@@ -40,4 +40,8 @@ export const actions = {
       console.log(e.response.data.error.message);
     }
   }
+};
+
+export const getters = {
+  isAuth: state => !!state.token
 };
