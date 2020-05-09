@@ -64,10 +64,10 @@ export const actions = {
   initAuth({ commit, dispatch }) {
     const token = JSON.parse(localStorage.getItem('token'));
     const tokenExpires = JSON.parse(localStorage.getItem('tokenExpires'));
-    if (new Date() > tokenExpires || !token) {
+    if (new Date().getTime > +tokenExpires || !token) {
       return;
     }
-    dispatch('auth/setExpiredToken', tokenExpires - new Date().getTime());
+    dispatch('auth/setExpiredToken', +tokenExpires - new Date().getTime());
     commit('setToken', token);
   }
 };
