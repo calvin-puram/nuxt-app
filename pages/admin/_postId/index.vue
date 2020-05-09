@@ -11,7 +11,7 @@ import { mapState } from 'vuex';
 
 export default {
   layout: 'admin',
-  middleware: ['auth'],
+  middleware: ['check-auth', 'auth'],
   async fetch({ store, error, params }) {
     try {
       await store.dispatch('posts/setPost', params.postId);

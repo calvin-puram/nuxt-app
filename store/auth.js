@@ -21,8 +21,12 @@ export const actions = {
       );
       if (res && res.data.idToken) {
         commit('setToken', res.data.idToken);
-        dispatch('auth/setExpiredToken', res.data.expiresIn * 1000);
-        // localStorage.setItem('token', JSON.stringify(res.data.idToken));
+        dispatch('setExpiredToken', res.data.expiresIn * 1000);
+        localStorage.setItem('token', JSON.stringify(res.data.idToken));
+        localStorage.setItem(
+          'tokenExpires',
+          JSON.stringify(new Date().getTime() + res.data.expiresIn * 1000)
+        );
       }
       return res;
     } catch (e) {
@@ -38,8 +42,12 @@ export const actions = {
       );
       if (res && res.data.idToken) {
         commit('setToken', res.data.idToken);
-        dispatch('auth/setExpiredToken', res.data.expiresIn * 1000);
-        // localStorage.setItem('token', JSON.stringify(res.data.idToken));
+        dispatch('setExpiredToken', res.data.expiresIn * 1000);
+        localStorage.setItem('token', JSON.stringify(res.data.idToken));
+        localStorage.setItem(
+          'tokenExpires',
+          JSON.stringify(new Date().getTime() + res.data.expiresIn * 1000)
+        );
       }
       return res;
     } catch (e) {
@@ -51,6 +59,16 @@ export const actions = {
     setTimeout(() => {
       commit('expiredToken');
     }, duration);
+  },
+
+  initAuth({ commit, dispatch }) {
+    const token = JSON.parse(localStorage.getItem('token'));
+    const tokenExpires = JSON.parse(localStorage.getItem('tokenExpires'));
+    if (new Date() > tokenExpires || !token) {
+      return;
+    }
+    dispatch('auth/setExpiredToken', tokenExpires - new Date().getTime());
+    commit('setToken', token);
   }
 };
 
