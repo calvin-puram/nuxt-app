@@ -1,6 +1,7 @@
 export const state = () => ({
   posts: [],
   post: {}
+  // authToken: localStorage.getItem('token') || ''
 });
 
 export const mutations = {
@@ -29,13 +30,16 @@ export const actions = {
     commit('setPost', res.data);
   },
 
-  async postData({ commit }, data) {
-    await this.$axios.post(`${process.env.POST_URL}/posts.json`, data);
+  async postData({ commit, rootState }, data) {
+    await this.$axios.post(
+      `${process.env.POST_URL}/posts.json?auth=${rootState.auth.token}`,
+      data
+    );
   },
 
-  async updatePost({ commit }, data) {
+  async updatePost({ commit, rootState }, data) {
     await this.$axios.patch(
-      `${process.env.baseUrl}/posts/${data.id}.json`,
+      `${process.env.POST_URL}/posts/${data.id}.json?auth=${rootState.auth.token}`,
       data.data
     );
   }

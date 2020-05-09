@@ -17,6 +17,7 @@ export const actions = {
       );
       if (res) {
         commit('setToken', res.data.idToken);
+        // localStorage.setItem('token', JSON.stringify(res.data.idToken));
       }
       return res;
     } catch (e) {
@@ -32,6 +33,7 @@ export const actions = {
       );
       if (res) {
         commit('setToken', res.data.idToken);
+        // localStorage.setItem('token', JSON.stringify(res.data.idToken));
       }
       return res;
     } catch (e) {
